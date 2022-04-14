@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 
 import com.ctwyrth.safetravels.models.Expense;
 import com.ctwyrth.safetravels.services.ExpenseService;
@@ -50,6 +51,21 @@ public class ExpenseController {
 	}
 	
 	// update an expense found by id
+	@GetMapping("/expenses/{id}/edit")
+	public String edit(@PathVariable("id") Long id, Model model) {
+		Expense expenseToShow = expenseService.findExpense(id);
+		model.addAttribute("expense", expenseToShow);
+		return "/expenses/edit.jsp";
+	}
+	@PutMapping("/expenses/{id}")
+	public String update(@Valid @ModelAttribute("expense") Expense expense, BindingResult result) {
+		if (result.hasErrors()) {
+			return "/expenses/edit.jsp";
+		} else {
+			expenseService.updateExpense(expense);
+			return "redirect:/expenses";
+		}
+	}
 	
 	// delete an expense
 	@GetMapping("/expenses/delete/{id}")

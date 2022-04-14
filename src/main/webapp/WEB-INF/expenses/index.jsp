@@ -28,6 +28,7 @@
 						<th>Expense</th>
 						<th>Vendor</th>
 						<th>Amount</th>
+						<th>Actions</th>
 					</tr>
 				</thead>
 				<tbody>
@@ -37,6 +38,7 @@
 								<td><c:out value="${expense.expenseName}" /></td>
 								<td><c:out value="${expense.vendor}" /></td>
 								<td>$<c:out value="${expense.charge}" />.00</td>
+								<td><a href="/expenses/<c:out value="${expense.id}" />/edit" class="nav-item">edit</a></td>
 							</tr>
 						</c:forEach>
 					</c:if>

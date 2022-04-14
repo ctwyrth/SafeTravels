@@ -32,7 +32,7 @@ public class ExpenseService {
         }
     }
     // updates an expense
-    public Expense update(Expense e) {
+    public Expense updateExpense(Expense e) {
        	return expenseRepository.save(e);
     }
     
