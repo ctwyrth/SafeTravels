@@ -22,8 +22,8 @@
 	<div class="container mx-auto mt-5">
 		<div class="col-6 mx-auto">
 			<h2>Update this Expense:</h2>
-			<a href="/expenses" class="nav-link">Go Home</a>
-			<form:form action="/expenses/${expense.id}" method="POST" modelAttribute="expense" class="rounded bg-info px-4 pt-4 pb-2">
+			<a href="/expenses" class="text-decoration-none">Go Home</a>
+			<form:form action="/expenses/${expense.id}" method="POST" modelAttribute="expense" class="rounded bg-info px-4 py-4">
 				<input type="hidden" name="_method" value="PUT" />
 				<div class="input-group mb-3">
 					<span class="input-group-text">Name:</span>
@@ -45,9 +45,13 @@
 					<form:textarea path="description" class="form-control" />
 				</div>
 				<div><form:errors path="description" /></div>
-				<div class="mb-3">
-					<input type="submit" value="Submit" class="btn btn-sm btn-secondary mx-auto" />
+				<div class="text-end">
+					<input type="submit" value="Submit" class="col-2 btn btn-sm btn-secondary me-2" />
 				</div>
+			</form:form>
+			<form:form action="/expenses/${expense.id}" method="post" class="px-2 pt-4 pb-2">
+    			<input type="hidden" name="_method" value="delete">
+    			<input type="submit" value="Delete" class="col-2 btn btn-sm btn-danger">
 			</form:form>
 		</div>
 	</div>

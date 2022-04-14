@@ -22,8 +22,8 @@
 	<div class="container-fluid">
 		<div class="container mx-auto mt-5">
 			<h1 class="display-5">Save Travels</h1>
-			<table class="table table-striped">
-				<thead class="table-secondary">
+			<table class="table table-striped border border-rounded">
+				<thead class="table-success">
 					<tr>
 						<th>Expense</th>
 						<th>Vendor</th>
@@ -34,11 +34,17 @@
 				<tbody>
 					<c:if test="${!expenses.isEmpty()}">
 						<c:forEach var="expense" items="${expenses}">
-							<tr>
-								<td><c:out value="${expense.expenseName}" /></td>
+							<tr class="align-middle">
+								<td><a href="/expense/<c:out value="${expense.id}" />" class="nav-link"><c:out value="${expense.expenseName}" /></a></td>
 								<td><c:out value="${expense.vendor}" /></td>
 								<td>$<c:out value="${expense.charge}" />.00</td>
-								<td><a href="/expenses/<c:out value="${expense.id}" />/edit" class="nav-item">edit</a></td>
+								<td>
+									<a href="/expenses/<c:out value="${expense.id}" />/edit" class="text-decoration-none">edit</a>
+									<form action="/expenses/${expense.id}" method="post" style="display: inline-block;">
+    									<input type="hidden" name="_method" value="delete">
+    									<input type="submit" value="Delete" class="btn btn-sm btn-danger ms-2">
+									</form>
+								</td>
 							</tr>
 						</c:forEach>
 					</c:if>
