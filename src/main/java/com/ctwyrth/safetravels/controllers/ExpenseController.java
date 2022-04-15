@@ -45,7 +45,7 @@ public class ExpenseController {
 	
 	// display the information of one expense found by id
 	@GetMapping("/expense/{id}")
-	public String showOneBookById(@PathVariable("id") Long id, Model model) {
+	public String showOneExpenseById(@PathVariable("id") Long id, Model model) {
 		Expense expenseToShow = expenseService.findExpense(id);
 		model.addAttribute("expense", expenseToShow);
 		return "/expenses/show.jsp";
